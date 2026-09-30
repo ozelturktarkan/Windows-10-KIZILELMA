@@ -17,7 +17,7 @@ Bu dosyalar için Windows'u yeniden kurmanız veya NTLite edinmeniz gerekmez. [K
 
 ## ISO indirme durumu
 
-**Internet Archive bağlantısı henüz eklenmedi.** Büyük ISO dosyasını proje sahibi ayrıca yükleyecek. Bu depodaki veya GitHub Releases'taki kaynak ZIP dosyaları Windows kurulum ISO'su değildir. ISO yüklemesi tamamlandığında bağlantı buraya eklenecek.
+**ISO yükleniyor:** [Windows 10 KIZILELMA — Internet Archive](https://archive.org/details/windows-10-kizilelma). Proje sahibinin 30 Eylül 2026 bildirimine göre yükleme devam ediyor. Bağlantı yükleme hedefidir; yüklemenin tamamlanması, ISO indirmesinin erişilebilirliği ve arşivin hesapladığı özetlerin eşleşmesi henüz doğrulanmadı. Bu depodaki veya GitHub Releases’taki kaynak ZIP dosyaları Windows kurulum ISO’su değildir.
 
 | Özellik | Değer |
 | --- | --- |

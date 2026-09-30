@@ -9,8 +9,8 @@
     "md5": "ed9e920caa80a46837f72df8349e8ecd"
   },
   "processed_wim_sha256": "2ce83e8206006b91338ff16783301846c6a574b5a76ef2c2829d53ff2d670c34",
-  "download_url": null,
-  "download_status": "Project owner will upload ISO to Internet Archive; link pending.",
+  "download_url": "https://archive.org/details/windows-10-kizilelma",
+  "download_status": "Uploading, as reported by the project owner on 2026-09-30. Completion, ISO download availability and archive checksum match have not yet been verified.",
   "previous_tested_iso_sha256": "4d898bfb9a50d8307b397f24d393afd3e31f1c731dcdf4afd51cfaf018a89722",
   "last_revision_test": "ISO content and hashes verified; no repeated VM install.",
   "asset_sha256": {
