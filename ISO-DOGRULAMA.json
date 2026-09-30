@@ -1,0 +1,48 @@
+{
+  "schema_version": 1,
+  "name": "Windows 10 KIZILELMA",
+  "revision": "v1.0-genislet",
+  "archive_item_url": "https://archive.org/details/windows-10-kizilelma",
+  "expected_hashes_source": "ISO-HASHES.txt",
+  "workflow_file": ".github/workflows/verify-archive-iso.yml",
+  "metadata_job_id": 109828035890,
+  "full_download_job_id": 109828071834,
+  "archive_metadata_check": {
+    "archive_file": "Windows 10 KIZILELMA.iso",
+    "archive_md5": "ed9e920caa80a46837f72df8349e8ecd",
+    "archive_metadata_url": "https://archive.org/metadata/windows-10-kizilelma",
+    "archive_sha1": "9eb6ca19f1a4a9bc973425f8c51ed49ca1713572",
+    "checked_at_utc": "2026-09-30T09:37:08.209738+00:00",
+    "download_url": "https://archive.org/download/windows-10-kizilelma/Windows%2010%20KIZILELMA.iso",
+    "expected_sha256": "f86479abd9f857f63e844bc47f2fadd1c134c55d76c306e666593dd339c3114f",
+    "full_file_verified": false,
+    "size_bytes": 2645475328,
+    "source_commit": "13bf0f769340be29bafe9c25181b7a4078f6ead0",
+    "status": "metadata_match_only"
+  },
+  "full_download_check": {
+    "checked_at_utc": "2026-09-30T09:38:38.849728+00:00",
+    "download_url": "https://archive.org/download/windows-10-kizilelma/Windows%2010%20KIZILELMA.iso",
+    "error": null,
+    "expected_size_bytes": 2645475328,
+    "full_file_verified": true,
+    "hash_matches": {
+      "md5": true,
+      "sha1": true,
+      "sha256": true
+    },
+    "hashes": {
+      "md5": "ed9e920caa80a46837f72df8349e8ecd",
+      "sha1": "9eb6ca19f1a4a9bc973425f8c51ed49ca1713572",
+      "sha256": "f86479abd9f857f63e844bc47f2fadd1c134c55d76c306e666593dd339c3114f"
+    },
+    "resolved_download_url": "https://dn710108.ca.archive.org/0/items/windows-10-kizilelma/Windows%2010%20KIZILELMA.iso",
+    "run_url": "https://github.com/ozelturktarkan/Windows-10-KIZILELMA/actions/runs/36697244376",
+    "scope": "File integrity only; ISO was not mounted, executed, installed or malware-scanned.",
+    "size_bytes": 2645475328,
+    "source_commit": "13bf0f769340be29bafe9c25181b7a4078f6ead0",
+    "started_at_utc": "2026-09-30T09:37:13.437614+00:00",
+    "status": "verified_full_download"
+  },
+  "note_tr": "Archive metadata kontrolü ve ardından ISO dosyasının tamamının indirilerek SHA-256, SHA-1 ve MD5 hesaplanması başarıyla tamamlandı. Bu kayıt dosya bütünlüğünü doğrular; zararlı yazılım taraması, kurulum testi veya güvenlik sertifikası değildir."
+}
