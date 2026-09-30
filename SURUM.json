@@ -9,12 +9,16 @@
     "md5": "ed9e920caa80a46837f72df8349e8ecd"
   },
   "processed_wim_sha256": "2ce83e8206006b91338ff16783301846c6a574b5a76ef2c2829d53ff2d670c34",
-  "download_url": "https://archive.org/details/windows-10-kizilelma",
-  "download_status": "Uploading, as reported by the project owner on 2026-09-30. Completion, ISO download availability and archive checksum match have not yet been verified.",
+  "download_url": "https://archive.org/download/windows-10-kizilelma/Windows%2010%20KIZILELMA.iso",
+  "download_status": "Verified by a complete download from Internet Archive on 2026-09-30. Byte count, SHA-256, SHA-1 and MD5 match ISO-HASHES.txt; Archive metadata size, SHA-1 and MD5 also match. This is an integrity check, not a malware scan or a repeated installation test.",
   "previous_tested_iso_sha256": "4d898bfb9a50d8307b397f24d393afd3e31f1c731dcdf4afd51cfaf018a89722",
   "last_revision_test": "ISO content and hashes verified; no repeated VM install.",
   "asset_sha256": {
     "turk.ani": "34e5d1e321acc0d32ca481123c30cfbc32d1702a7c0eeb39069ffefbf69e0c27",
     "KIZILELMA.jpg": "11f263b2ff71397e78ebcf292485a4f9617c644d12e7601f50df852ad7b1897c"
-  }
+  },
+  "archive_item_url": "https://archive.org/details/windows-10-kizilelma",
+  "download_verified_at_utc": "2026-09-30T09:38:38.849728+00:00",
+  "download_verification_report": "ISO-DOGRULAMA.json",
+  "download_verification_run_url": "https://github.com/ozelturktarkan/Windows-10-KIZILELMA/actions/runs/36697244376"
 }
