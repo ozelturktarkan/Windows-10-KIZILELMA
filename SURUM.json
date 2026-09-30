@@ -1,0 +1,20 @@
+{
+  "name": "Windows 10 KIZILELMA",
+  "revision": "v1.0-genislet",
+  "iso_name": "Windows 10 KIZILELMA.iso",
+  "iso_bytes": 2645475328,
+  "hashes": {
+    "sha256": "f86479abd9f857f63e844bc47f2fadd1c134c55d76c306e666593dd339c3114f",
+    "sha1": "9eb6ca19f1a4a9bc973425f8c51ed49ca1713572",
+    "md5": "ed9e920caa80a46837f72df8349e8ecd"
+  },
+  "processed_wim_sha256": "2ce83e8206006b91338ff16783301846c6a574b5a76ef2c2829d53ff2d670c34",
+  "download_url": null,
+  "download_status": "Project owner will upload ISO to Internet Archive; link pending.",
+  "previous_tested_iso_sha256": "4d898bfb9a50d8307b397f24d393afd3e31f1c731dcdf4afd51cfaf018a89722",
+  "last_revision_test": "ISO content and hashes verified; no repeated VM install.",
+  "asset_sha256": {
+    "turk.ani": "34e5d1e321acc0d32ca481123c30cfbc32d1702a7c0eeb39069ffefbf69e0c27",
+    "KIZILELMA.jpg": "11f263b2ff71397e78ebcf292485a4f9617c644d12e7601f50df852ad7b1897c"
+  }
+}
