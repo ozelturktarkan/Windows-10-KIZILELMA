@@ -4,6 +4,23 @@
 
 KIZILELMA, eski bilgisayarlar için hangi bileşenlerin kaldırıldığını ve hangi ayarların değiştirildiğini açıkça gösteren bir Windows özelleştirmesidir. Hedef donanım **2 GB RAM + HDD**; imkân varsa SSD önerilir. Bu depoda Windows ISO'su yerine NTLite ön ayarları, açık betikler, üretim tarifi, test sonuçları ve ISO hash değerleri bulunur.
 
+## ISO indir
+
+**[Windows 10 KIZILELMA.iso — doğrudan indir](https://archive.org/download/windows-10-kizilelma/Windows%2010%20KIZILELMA.iso)** · [Internet Archive sayfası](https://archive.org/details/windows-10-kizilelma) · [Tüm dosyalar](https://archive.org/download/windows-10-kizilelma/)
+
+**Yükleme tamamlandı; tam dosya bütünlüğü doğrulandı.** 30 Eylül 2026, 12:38:38 (Türkiye, UTC+3) tarihinde Internet Archive'dan ISO'nun **2.645.475.328 baytının tamamı** okunarak SHA-256, SHA-1 ve MD5 yeniden hesaplandı; üçü de depodaki [ISO-HASHES.txt](ISO-HASHES.txt) değerleriyle eşleşti. Archive metadata kaydındaki boyut, SHA-1 ve MD5 de ayrıca eşleşti. [Doğrulama koşusu](https://github.com/ozelturktarkan/Windows-10-KIZILELMA/actions/runs/36697244376) · [Kalıcı doğrulama kaydı](ISO-DOGRULAMA.json).
+
+Bu kontrol dosya bütünlüğünü doğrular; zararlı yazılım taraması, yeni bir kurulum testi veya güvenlik sertifikası değildir. GitHub'daki kaynak ZIP dosyaları Windows kurulum ISO'su değildir.
+
+| Özellik | Değer |
+| --- | --- |
+| Taban | Windows 10 Home 1607, 10.0.14393.0 |
+| Dil / mimari | Türkçe / x86 (32 bit) |
+| Kurulum indeksi | Yalnız Home, indeks 1 |
+| Son yapılandırma | Genişlet arka plan revizyonu, 30 Eylül 2026 |
+| ISO adı | Windows 10 KIZILELMA.iso |
+| Boyut | 2.645.475.328 bayt; yaklaşık 2,46 GiB |
+
 ## Yalnız imleç veya arka plan istiyorum
 
 | Dosya | İndir | Kullanım |
@@ -14,19 +31,6 @@ KIZILELMA, eski bilgisayarlar için hangi bileşenlerin kaldırıldığını ve 
 Bu dosyalar için Windows'u yeniden kurmanız veya NTLite edinmeniz gerekmez. [Kurulum adımları ve dosya özetleri](assets/README.md). Dosyalar ayrıca [assets klasöründe](assets) ayrı ayrı bulunur.
 
 <img src="assets/KIZILELMA.jpg" alt="Windows 10 KIZILELMA arka planı" width="720">
-
-## ISO indirme durumu
-
-**ISO yükleniyor:** [Windows 10 KIZILELMA — Internet Archive](https://archive.org/details/windows-10-kizilelma). Proje sahibinin 30 Eylül 2026 bildirimine göre yükleme devam ediyor. Bağlantı yükleme hedefidir; yüklemenin tamamlanması, ISO indirmesinin erişilebilirliği ve arşivin hesapladığı özetlerin eşleşmesi henüz doğrulanmadı. Bu depodaki veya GitHub Releases’taki kaynak ZIP dosyaları Windows kurulum ISO’su değildir.
-
-| Özellik | Değer |
-| --- | --- |
-| Taban | Windows 10 Home 1607, 10.0.14393.0 |
-| Dil / mimari | Türkçe / x86 (32 bit) |
-| Kurulum indeksi | Yalnız Home, indeks 1 |
-| Son yapılandırma | Genişlet arka plan revizyonu, 30 Eylül 2026 |
-| ISO adı | Windows 10 KIZILELMA.iso |
-| Boyut | 2.645.475.328 bayt; yaklaşık 2,46 GiB |
 
 ## Güvenmek yerine inceleyin, kendiniz üretin
 
