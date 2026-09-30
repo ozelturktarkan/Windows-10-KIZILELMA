@@ -1,0 +1,140 @@
+name: Release ISO indirme bilgisini guncelle
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - .github/workflows/update-release-download-once.yml
+
+permissions:
+  contents: write
+
+concurrency:
+  group: kizilelma-release-notes-update
+  cancel-in-progress: false
+
+jobs:
+  update-release:
+    if: github.repository == 'ozelturktarkan/Windows-10-KIZILELMA'
+    runs-on: ubuntu-24.04
+    timeout-minutes: 5
+    steps:
+      - name: Yalniz mevcut release aciklamasini guncelle ve geri oku
+        env:
+          GH_TOKEN: ${{ github.token }}
+        shell: bash
+        run: |
+          python3 -u - <<'PY'
+          import base64
+          import datetime
+          import json
+          import os
+          import urllib.request
+
+          repo = 'ozelturktarkan/Windows-10-KIZILELMA'
+          release_id = 399756143
+          tag = 'v1.0-genislet'
+          evidence_commit = '87b159cc91ad158b220c00a428acbed8a41249d9'
+          root = 'https://api.github.com/repos/' + repo
+
+          def api(path, method='GET', data=None):
+              headers = {
+                  'Authorization': 'Bearer ' + os.environ['GH_TOKEN'],
+                  'Accept': 'application/vnd.github+json',
+                  'X-GitHub-Api-Version': '2022-11-28',
+                  'User-Agent': 'KIZILELMA-Release-Notes-Update/1.0',
+              }
+              payload = None
+              if data is not None:
+                  headers['Content-Type'] = 'application/json'
+                  payload = json.dumps(data, ensure_ascii=False).encode('utf-8')
+              request = urllib.request.Request(root + path, data=payload, headers=headers, method=method)
+              with urllib.request.urlopen(request, timeout=45) as response:
+                  return json.load(response)
+
+          def content(path):
+              item = api('/contents/' + path + '?ref=' + evidence_commit)
+              if item.get('encoding') != 'base64':
+                  raise ValueError('Beklenmeyen dosya kodlamasi')
+              return base64.b64decode(item['content']).decode('utf-8-sig')
+
+          report = json.loads(content('ISO-DOGRULAMA.json'))
+          check = report['full_download_check']
+          expected = dict(line.split(': ', 1) for line in content('ISO-HASHES.txt').splitlines()[1:] if ': ' in line)
+          assert report['revision'] == tag
+          assert check['status'] == 'verified_full_download'
+          assert check['full_file_verified'] is True and check['error'] is None
+          assert check['size_bytes'] == check['expected_size_bytes'] == int(expected['Bytes'])
+          for name in ('sha256', 'sha1', 'md5'):
+              assert check['hash_matches'][name] is True
+              assert check['hashes'][name] == expected[name.upper()]
+          url = check['download_url']
+          assert url == 'https://archive.org/download/windows-10-kizilelma/Windows%2010%20KIZILELMA.iso'
+          assert check['run_url'] == 'https://github.com/' + repo + '/actions/runs/36697244376'
+          assert check['checked_at_utc'].startswith('2026-09-30T09:38:38.')
+          evidence_url = 'https://github.com/' + repo + '/blob/' + evidence_commit + '/ISO-DOGRULAMA.json'
+          verified_at = datetime.datetime.fromisoformat(check['checked_at_utc']).astimezone(datetime.timezone(datetime.timedelta(hours=3)))
+          size_tr = format(check['size_bytes'], ',').replace(',', '.')
+
+          path = '/releases/' + str(release_id)
+          before = api(path)
+          assert before['tag_name'] == tag and before['draft'] is False and before['prerelease'] is False
+          assert before.get('immutable') is False
+          tag_before = api('/git/ref/tags/' + tag)['object']
+          body = before['body']
+          paragraphs = body.split('\n\n')
+          stale = [p for p in paragraphs if '**ISO yükleniyor:**' in p]
+          if len(stale) != 1 or not stale[0].startswith('Bu yayında küçük kaynak dosyaları,'):
+              raise ValueError('Beklenen eski ISO aciklamasi bulunamadi; eszamanli degisiklik olabilecegi icin duruldu.')
+          replacement = (
+              '## ISO indir\n\n'
+              '**[Windows 10 KIZILELMA.iso — doğrudan indir](' + url + ')** · '
+              '[Internet Archive sayfası](https://archive.org/details/windows-10-kizilelma) · '
+              '[Tüm dosyalar](https://archive.org/download/windows-10-kizilelma/)\n\n'
+              '**Yükleme tamamlandı; tam dosya bütünlüğü doğrulandı.** '
+              '30 Eylül 2026, ' + verified_at.strftime('%H:%M:%S') + ' (Türkiye, UTC+3) tarihinde '
+              "Internet Archive'dan ISO'nun **" + size_tr + ' baytının tamamı** okunarak '
+              'SHA-256, SHA-1 ve MD5 yeniden hesaplandı; üçü de depodaki ISO-HASHES.txt değerleriyle eşleşti. '
+              'Archive metadata kaydındaki boyut, SHA-1 ve MD5 de ayrıca eşleşti.\n\n'
+              '[Başarılı doğrulama koşusu](' + check['run_url'] + ') · '
+              '[Kalıcı doğrulama kaydı](' + evidence_url + ')\n\n'
+              'Bu kontrol dosya bütünlüğünü doğrular; zararlı yazılım taraması, yeni bir kurulum testi veya güvenlik sertifikası değildir.\n\n'
+              '## Kaynaklar ve görseller\n\n'
+              'Bu yayının Assets bölümünde küçük kaynak dosyaları, tek başına kullanılabilen dalgalanan Türk bayrağı imleci ve KIZILELMA arka planı bulunur. '
+              "**ISO, Internet Archive'da barındırılıyor; yukarıdaki doğrudan indirme bağlantısını kullanın.** "
+              "Otomatik Source code ZIP/TAR dosyaları Windows kurulum ISO'su değildir."
+          )
+          updated_body = body.replace(stale[0], replacement, 1)
+          for value in check['hashes'].values():
+              assert value in body and value in updated_body
+          assert '**ISO yükleniyor:**' not in updated_body
+          assert 'henüz doğrulanmadı' not in updated_body
+          assert updated_body.endswith(body.split(stale[0], 1)[1])
+          current = api(path)
+          if current['body'] != body or current['updated_at'] != before['updated_at']:
+              raise ValueError('Release degisti; baska bir duzenlemeyi ezmemek icin duruldu.')
+          api(path, method='PATCH', data={'body': updated_body})
+          after = api(path)
+          assert after['body'] == updated_body
+          for key in ('id', 'tag_name', 'target_commitish', 'name', 'draft', 'prerelease', 'published_at', 'immutable'):
+              assert after.get(key) == before.get(key), key
+          asset_keys = ('id', 'name', 'size', 'digest', 'browser_download_url')
+          def assets(item):
+              return sorted(tuple(a.get(k) for k in asset_keys) for a in item['assets'])
+          assert assets(before) == assets(after)
+          assert api('/git/ref/tags/' + tag)['object'] == tag_before
+          result = {
+              'status': 'release_notes_updated_and_read_back',
+              'release_id': release_id,
+              'release_url': after['html_url'],
+              'updated_at': after['updated_at'],
+              'download_url': url,
+              'verification_record_url': evidence_url,
+              'preserved_tag': tag,
+              'preserved_assets': [a['name'] for a in after['assets']],
+              'changed_fields': ['body'],
+          }
+          print('RELEASE_UPDATE_REPORT=' + json.dumps(result, ensure_ascii=False), flush=True)
+          with open(os.environ['GITHUB_STEP_SUMMARY'], 'a', encoding='utf-8') as summary:
+              summary.write('## Release notları güncellendi\n\n```json\n' + json.dumps(result, ensure_ascii=False, indent=2) + '\n```\n\n' + updated_body + '\n')
+          PY
