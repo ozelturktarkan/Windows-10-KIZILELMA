@@ -1,5 +1,7 @@
 # Windows 10 KIZILELMA
 
+> **Tüm diziyi keşfedin:** Windows 10 ve Windows 11 profillerini, donanım hedeflerini ve yayın durumlarını birlikte görmek için [Windows 10/11 HAKANLAR Dizesi ana reposunu ziyaret edin](https://github.com/ozelturktarkan/Windows-10-11-HAKANLAR-Dizesi).
+
 **Türkçe Windows 10 Home 1607 · 32 bit · Temel masaüstü deneyimi**
 
 KIZILELMA, eski bilgisayarlar için hangi bileşenlerin kaldırıldığını ve hangi ayarların değiştirildiğini açıkça gösteren bir Windows özelleştirmesidir. Hedef donanım **2 GB RAM + HDD**; imkân varsa SSD önerilir. Bu depoda Windows ISO'su yerine NTLite ön ayarları, açık betikler, üretim tarifi, test sonuçları ve ISO hash değerleri bulunur.
